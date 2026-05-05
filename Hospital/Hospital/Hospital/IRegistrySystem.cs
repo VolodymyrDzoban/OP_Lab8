@@ -13,11 +13,14 @@ namespace Hospital
         public void RemovePatient(int patientId);
         public Patient SearchPatient(string patientName, string patientSurname);
         public Patient SearchPatient(int patientId);
+        public List<Patient> SearchPatientsByName(string patientName, string patientSurname);
         public Doctor SearchDoctor(string doctorName, string doctorSurname);
         public Doctor SearchDoctor(int doctorId);
         public List<Doctor> SearchDoctorsBySpecialization(string specialization);
         public List<Doctor> GetAllDoctors();
+        public List<Patient> GetAllPatients();
         public void ViewAllDoctorsWithSpecializations();
+        public void ViewAllPatients();
         public void ViewDoctorVisitPlan(int doctorId);
         public void ViewDoctorVisitPlan(Doctor doctor);
         public void ViewAllDoctorsVisitPlan();
@@ -26,5 +29,6 @@ namespace Hospital
         public void ViewAllPatientsMedicalCardsOfDoctor(int doctorId);
         public void ViewAllPatientsMedicalCardsOfDoctor(Doctor doctor);
         public void ViewAllPatientsMedicalCardsOfAllDoctors();
+        public void ViewAllPatientsMedicalCardsByPatients();
     }
 }

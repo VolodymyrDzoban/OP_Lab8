@@ -7,6 +7,7 @@ namespace Hospital.Persons
 {
     public class Patient : Person
     {
+        private int nextRecordId = 1;
         private readonly List<EPatientCardRecord> card = new List<EPatientCardRecord>();
 
         public Patient(int id, string name, string surname)
@@ -16,14 +17,19 @@ namespace Hospital.Persons
             this.Surname = surname;
         }
 
-        public void AddMedicalRecord(EPatientCardRecord record)
+        public void AddMedicalRecord(string diagnosis, DateTime start, Doctor doctor)
         {
-            if (record == null)
+            if (string.IsNullOrWhiteSpace(diagnosis))
             {
-                throw new ArgumentNullException(nameof(record), "Medical record cannot be null.");
+                throw new ArgumentNullException(nameof(diagnosis), "Diagnosis cannot be empty.");
+            }
+            if (doctor == null)
+            {
+                throw new ArgumentNullException(nameof(doctor), "Doctor cannot be null.");
             }
 
-            card.Add(record);
+            card.Add(new EPatientCardRecord(nextRecordId, diagnosis, start, doctor));
+            nextRecordId++;
         }
 
         public void CloseMedicalRecord(int recordId, DateTime end)

@@ -26,6 +26,11 @@ namespace Hospital.VPlan
             }
         }
 
+        private static void SortByStartTime(List<VisitRecord> records)
+        {
+            records.Sort((a, b) => a.Start.CompareTo(b.Start));
+        }
+
         public void AddSchedule(DateOnly date, List<VisitRecord> records)
         {
             if (records == null)
@@ -49,6 +54,7 @@ namespace Hospital.VPlan
                 }
             }
 
+            SortByStartTime(records);
             plan.Add(date, records);
         }
 
@@ -66,6 +72,7 @@ namespace Hospital.VPlan
 
             CheckOverlap(records, record, null);
             records.Add(record);
+            SortByStartTime(records);
         }
 
         public void EditVisitRecord(DateOnly date, VisitRecord record, VisitRecord newRecord)
@@ -84,6 +91,7 @@ namespace Hospital.VPlan
 
             CheckOverlap(records, newRecord, record);
             records[index] = newRecord;
+            SortByStartTime(records);
         }
 
         public void EditSchedule(DateOnly date, List<VisitRecord> newRecords)
@@ -109,6 +117,7 @@ namespace Hospital.VPlan
                 }
             }
 
+            SortByStartTime(newRecords);
             plan[date] = newRecords;
         }
 

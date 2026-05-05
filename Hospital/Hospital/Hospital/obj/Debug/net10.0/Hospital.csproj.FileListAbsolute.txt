@@ -12,3 +12,4 @@ D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\obj\Debug\net10.0\refint\Hospital
 D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\obj\Debug\net10.0\Hospital.pdb
 D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\obj\Debug\net10.0\Hospital.genruntimeconfig.cache
 D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\obj\Debug\net10.0\ref\Hospital.dll
+D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\obj\Debug\net10.0\Hospital.sourcelink.json

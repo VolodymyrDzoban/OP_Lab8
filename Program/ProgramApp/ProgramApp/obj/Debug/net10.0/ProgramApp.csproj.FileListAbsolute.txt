@@ -16,3 +16,4 @@ D:\OP_Lab2\Lab8\Lab\Program\ProgramApp\ProgramApp\bin\Debug\net10.0\Hospital.dll
 D:\OP_Lab2\Lab8\Lab\Program\ProgramApp\ProgramApp\bin\Debug\net10.0\Hospital.pdb
 D:\OP_Lab2\Lab8\Lab\Program\ProgramApp\ProgramApp\obj\Debug\net10.0\ProgramApp.csproj.AssemblyReference.cache
 D:\OP_Lab2\Lab8\Lab\Program\ProgramApp\ProgramApp\obj\Debug\net10.0\ProgramApp.csproj.Up2Date
+D:\OP_Lab2\Lab8\Lab\Program\ProgramApp\ProgramApp\obj\Debug\net10.0\ProgramApp.sourcelink.json

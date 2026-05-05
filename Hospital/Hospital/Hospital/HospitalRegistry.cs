@@ -21,7 +21,8 @@ namespace Hospital
                 throw new ArgumentException($"A doctor with ID {doctor.ID} already exists.");
             }
 
-            this.doctors.Add(doctor);
+            int insertAt = this.doctors.FindLastIndex(d => d.ID < doctor.ID) + 1;
+            this.doctors.Insert(insertAt, doctor);
         }
         public void RemoveDoctor(int doctorId)
         {
@@ -42,16 +43,44 @@ namespace Hospital
                 throw new ArgumentException($"A patient with ID {patient.ID} already exists.");
             }
 
-            this.patients.Add(patient);
+            int insertAt = this.patients.FindLastIndex(p => p.ID < patient.ID) + 1;
+            this.patients.Insert(insertAt, patient);
         }
-        public void RemovePatient(int patientId)
+        public string RemovePatientWithName(int patientId)
         {
-            int removed = this.patients.RemoveAll(p => p.ID == patientId);
-
-            if (removed == 0)
+            Patient patient = this.patients.Find(p => p.ID == patientId);
+            if (patient == null)
             {
                 throw new InvalidOperationException($"Patient with ID {patientId} not found.");
             }
+
+            foreach (Doctor doctor in this.doctors)
+            {
+                var plan = doctor.GetVisitPlan();
+                List<DateOnly> emptyDates = new List<DateOnly>();
+
+                foreach (var entry in plan)
+                {
+                    entry.Value.RemoveAll(v => v.Patient.ID == patientId);
+                    if (entry.Value.Count == 0)
+                    {
+                        emptyDates.Add(entry.Key);
+                    }
+                }
+
+                foreach (DateOnly date in emptyDates)
+                {
+                    plan.Remove(date);
+                }
+            }
+
+            string fullName = patient.GetFullName();
+            this.patients.Remove(patient);
+            return fullName;
+        }
+        public void RemovePatient(int patientId)
+        {
+            RemovePatientWithName(patientId);
         }
         public Patient SearchPatient(string patientName, string patientSurname)
         {
@@ -61,6 +90,10 @@ namespace Hospital
         {
             return this.patients.Find(p => p.ID == patientId);
         }
+        public List<Patient> SearchPatientsByName(string patientName, string patientSurname)
+        {
+            return this.patients.FindAll(p => p.Name == patientName && p.Surname == patientSurname);
+        }
         public Doctor SearchDoctor(string doctorName, string doctorSurname)
         {
             return this.doctors.Find(d => d.Name == doctorName && d.Surname == doctorSurname);
@@ -69,13 +102,21 @@ namespace Hospital
         {
             return this.doctors.Find(d => d.ID == doctorId);
         }
+        public List<Doctor> SearchDoctorsByName(string doctorName, string doctorSurname)
+        {
+            return this.doctors.FindAll(d => d.Name == doctorName && d.Surname == doctorSurname);
+        }
         public List<Doctor> SearchDoctorsBySpecialization(string specialization)
         {
             return this.doctors.FindAll(d => d.Specialization == specialization);
         }
         public List<Doctor> GetAllDoctors()
         {
-            return this.doctors;
+            return new List<Doctor>(this.doctors);
+        }
+        public List<Patient> GetAllPatients()
+        {
+            return new List<Patient>(this.patients);
         }
         public void ViewAllDoctorsWithSpecializations()
         {
@@ -90,6 +131,21 @@ namespace Hospital
             foreach (var doctor in doctors)
             {
                 Console.WriteLine($"[{doctor.ID}] {doctor.GetFullName()} -- {doctor.Specialization}");
+            }
+        }
+        public void ViewAllPatients()
+        {
+            if (patients.Count == 0)
+            {
+                Console.WriteLine("No patients registered.");
+                return;
+            }
+
+            Console.WriteLine("=== All Patients ===");
+
+            foreach (Patient patient in patients)
+            {
+                Console.WriteLine($"[{patient.ID}] {patient.GetFullName()}");
             }
         }
         public void ViewDoctorVisitPlan(int doctorId)
@@ -118,7 +174,7 @@ namespace Hospital
                 return;
             }
 
-            Console.WriteLine($"=== Visit plan for Dr. {doctor.GetFullName()} ===");
+            Console.WriteLine($"=== Visit plan for [{doctor.ID}] Dr. {doctor.GetFullName()} ===");
 
             foreach (var entry in visitPlan)
             {
@@ -207,6 +263,19 @@ namespace Hospital
             foreach (var doctor in doctors)
             {
                 ViewAllPatientsMedicalCardsOfDoctor(doctor);
+            }
+        }
+        public void ViewAllPatientsMedicalCardsByPatients()
+        {
+            if (patients.Count == 0)
+            {
+                Console.WriteLine("No patients registered.");
+                return;
+            }
+
+            foreach (Patient patient in patients)
+            {
+                ViewPatientMedicalCard(patient);
             }
         }
     }
