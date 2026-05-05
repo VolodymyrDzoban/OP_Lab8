@@ -1,0 +1,14 @@
+D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\obj\Debug\net10.0\Hospital.GeneratedMSBuildEditorConfig.editorconfig
+D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\obj\Debug\net10.0\Hospital.AssemblyInfoInputs.cache
+D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\obj\Debug\net10.0\Hospital.AssemblyInfo.cs
+D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\obj\Debug\net10.0\Hospital.csproj.CoreCompileInputs.cache
+D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\bin\Debug\net10.0\Hospital.exe
+D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\bin\Debug\net10.0\Hospital.deps.json
+D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\bin\Debug\net10.0\Hospital.runtimeconfig.json
+D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\bin\Debug\net10.0\Hospital.dll
+D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\bin\Debug\net10.0\Hospital.pdb
+D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\obj\Debug\net10.0\Hospital.dll
+D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\obj\Debug\net10.0\refint\Hospital.dll
+D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\obj\Debug\net10.0\Hospital.pdb
+D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\obj\Debug\net10.0\Hospital.genruntimeconfig.cache
+D:\OP_Lab2\Lab8\Lab\Hospital\Hospital\Hospital\obj\Debug\net10.0\ref\Hospital.dll
